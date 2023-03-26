@@ -13,23 +13,12 @@ public class MinerPatrol : MonoBehaviour
     private bool isChasing = false;
 
     Vector3 prevLocation = Vector3.zero;
-    
-    // Animator anim;
-    // Start is called before the first frame update
-    private void Start()
-    {
-        // anim = GetComponent<Animator>();
-    }
 
     // Update is called once per frame
     private void Update()
     {
         //mendapatkan arah gerak enemy saat ini
         Vector3 curVelocity  = (transform.position - prevLocation);
-
-        //menjalankan animasi gerak enemy berdasarkan arah gerak saat ini
-        // anim.SetFloat("walkX", curVelocity.x);
-        // anim.SetFloat("walkY", curVelocity.y);
 
         prevLocation = transform.position;
 
