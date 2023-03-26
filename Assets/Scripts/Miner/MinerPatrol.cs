@@ -8,11 +8,8 @@ public class MinerPatrol : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float vision;
     [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private float waitTime;
-    private float waitCounter;
 
     private int currentWaypointIndex = 0;
-    private bool isWaiting = false;
     private bool isChasing = false;
 
     Vector3 prevLocation = Vector3.zero;
@@ -22,7 +19,6 @@ public class MinerPatrol : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        waitCounter = waitTime;
     }
 
     // Update is called once per frame
@@ -39,34 +35,23 @@ public class MinerPatrol : MonoBehaviour
 
         if (!DetectPlayer())
         {
-            if(!isWaiting) {
             //gerak ke arah waypoints saat ini
-                if (transform.position != waypoints[currentWaypointIndex].transform.position){
-                    transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
-                } else {
-                    //hal yg dilakukan ketika sampai ke waypoints saat ini
-                    if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < .1f)
-                    {
-                        // 1. mendapatkan waypoints selanjutnya dan berhenti
-                        currentWaypointIndex++;
-                        waitCounter = 0;
+            if (transform.position != waypoints[currentWaypointIndex].transform.position){
+                transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
+            } else {
+                //hal yg dilakukan ketika sampai ke waypoints saat ini
+                if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < .1f)
+                {
+                    // 1. mendapatkan waypoints selanjutnya
+                    currentWaypointIndex++;
                                 
-                        // 2. jika sampai ke waypoints terakhir, waypoints selanjutnya adalah waypoints pertama
-                        if (currentWaypointIndex >= waypoints.Length)
-                        {
-                            currentWaypointIndex = 0;
-                        }
+                    // 2. jika sampai ke waypoints terakhir, waypoints selanjutnya adalah waypoints pertama
+                    if (currentWaypointIndex >= waypoints.Length)
+                    {
+                        currentWaypointIndex = 0;
                     }
                 }
-            }
-            // 3. berhenti sebentar setelah sampai ke waypoints
-            if (waitCounter < waitTime)
-            {
-                isWaiting = true;
-                waitCounter += Time.deltaTime;
-            } else {
-                isWaiting = false;
-            }
+            }    
         }     
     }
 
@@ -95,14 +80,12 @@ public class MinerPatrol : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, vision);
     }
 
-    //membuat penjaga mengejar player selama 2 detik ketika player ada di range penjaga
+    //membuat penjaga mengejar player selama 1 detik ketika player ada di range penjaga
     private IEnumerator Chase(Collider2D player)
     {  
         isChasing = true;
-        isWaiting = false;
-        waitCounter = waitTime; 
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         isChasing = false;
     }
 }
