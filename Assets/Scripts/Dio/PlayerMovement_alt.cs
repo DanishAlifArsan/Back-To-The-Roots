@@ -60,11 +60,11 @@ public class PlayerMovement_alt : MonoBehaviour
 
         if (x > 0)
         {
-            transform.localScale = new Vector2(2, 2);
+            transform.localScale = new Vector2(1, 1);
         }
         else if (x < 0)
         {
-            transform.localScale = new Vector2(-2, 2);
+            transform.localScale = new Vector2(-1, 1);
         }
 
         transform.Translate(moveDelta * Time.deltaTime);
