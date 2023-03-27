@@ -9,12 +9,31 @@ public class MinerPatrol : MonoBehaviour
     [SerializeField] private float vision;
     [SerializeField] private LayerMask playerLayer;
 
+    private Vector3 prevLocation = Vector3.zero;
+
     private int currentWaypointIndex = 0;
     private bool isChasing = false;
+
+    private void Start() {
+        // prevLocation = transform.position;
+    }
 
     // Update is called once per frame
     private void Update()
     {
+        Vector3 curVelocity  = (transform.position - prevLocation);
+
+        Debug.Log(curVelocity.x);
+
+        if (curVelocity.x < 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
+        } else if (curVelocity.x > 0) {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * 1, transform.localScale.y, transform.localScale.z);
+        }
+
+        prevLocation = transform.position;
+
         if (!DetectPlayer())
         {    
             //hal yg dilakukan ketika sampai ke waypoints saat ini
