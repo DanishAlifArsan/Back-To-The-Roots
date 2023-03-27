@@ -21,9 +21,8 @@ public class MinerPatrol : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        
         Vector3 curVelocity  = (transform.position - prevLocation);
-
-        Debug.Log(curVelocity.x);
 
         if (curVelocity.x < 0)
         {
@@ -33,6 +32,8 @@ public class MinerPatrol : MonoBehaviour
         }
 
         prevLocation = transform.position;
+
+        
 
         if (!DetectPlayer())
         {    
@@ -66,7 +67,7 @@ public class MinerPatrol : MonoBehaviour
             if (hit.collider != null && hit.collider.gameObject.CompareTag("Player"))
             {
                 // mengejar ke arah player
-                StartCoroutine(Chase(player, hit));
+                StartCoroutine(Chase(player));
             }
         }
 
@@ -81,11 +82,23 @@ public class MinerPatrol : MonoBehaviour
     }
 
     //membuat penjaga mengejar player selama 1 detik ketika player ada di range penjaga
-    private IEnumerator Chase(Collider2D player, RaycastHit2D hit)
+    private IEnumerator Chase(Collider2D player)
     {  
         isChasing = true;
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         yield return new WaitForSeconds(2);
         isChasing = false;
+
+        if (!isChasing )
+        {
+            if (player.transform.position.x < transform.position.x + vision && player.transform.position.x > transform.position.x - vision)
+            {
+                if (player.transform.position.y < transform.position.y + vision && player.transform.position.y > transform.position.y - vision)
+                {
+                    Time.timeScale = 0;
+                    Debug.Log("Ketangkap");
+                }
+            }   
+        } 
     }
 }
