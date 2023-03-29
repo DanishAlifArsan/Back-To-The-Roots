@@ -21,7 +21,7 @@ public class MinerPatrol : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
+        //dijelasin di video laporan minggu 2
         Vector3 curVelocity  = (transform.position - prevLocation);
 
         if (curVelocity.x < 0)
@@ -32,9 +32,8 @@ public class MinerPatrol : MonoBehaviour
         }
 
         prevLocation = transform.position;
-
+        //sampai sini
         
-
         if (!DetectPlayer())
         {    
             //hal yg dilakukan ketika sampai ke waypoints saat ini
@@ -89,6 +88,7 @@ public class MinerPatrol : MonoBehaviour
         yield return new WaitForSeconds(2);
         isChasing = false;
 
+        //dijelasin di video laporan minggu 2
         if (!isChasing )
         {
             if (player.transform.position.x < transform.position.x + vision && player.transform.position.x > transform.position.x - vision)
@@ -100,5 +100,6 @@ public class MinerPatrol : MonoBehaviour
                 }
             }   
         } 
+        //sampai sini
     }
 }
