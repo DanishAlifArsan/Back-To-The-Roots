@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isMoving;
     private bool isCrouching = false;
     private bool isSprinting = false;
+    private bool isTired = false;
     
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
@@ -37,11 +38,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log(currentStamina);
 
-        if (currentStamina < 0)
+        //kalau stamina nol, player gak bisa gerak untuk sementara
+         if (currentStamina < 0)
         {
+            isTired = true;
             body.bodyType = RigidbodyType2D.Static;
             anim.enabled = false;
         } else if (currentStamina >= maxStamina) {
+            isTired = false;
             body.bodyType = RigidbodyType2D.Dynamic;
             anim.enabled = true;
         }
@@ -73,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isMoving", isMoving); 
 
         //membuat player crouch
-        if (!isSprinting)
+        if (!isSprinting && !isTired)
         {
             if (Input.GetKey("space") && currentStamina > 0)
             {
@@ -92,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
          //membuat player sprint
-        if (!isCrouching)
+        if (!isCrouching && !isTired)
         {
             if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
             {
