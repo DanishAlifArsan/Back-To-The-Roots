@@ -585,7 +585,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepFactor: 0.05
   stopFactor: 0.1
-  maxSpeed: 5
+  walkingSpeed: 2
+  crouchingspeed: 1
+  sprintspeed: 5
+  maxStamina: 5
 --- !u!1 &1565548151
 GameObject:
   m_ObjectHideFlags: 0

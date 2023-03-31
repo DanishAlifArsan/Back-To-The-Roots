@@ -89,7 +89,7 @@ public class MinerPatrol : MonoBehaviour
         isChasing = false;
 
         //dijelasin di video laporan minggu 2
-        if (!isChasing )
+        if (!isChasing && player.GetComponent<Collider2D>().gameObject.CompareTag("Player"))
         {
             if (player.transform.position.x < transform.position.x + vision && player.transform.position.x > transform.position.x - vision)
             {
