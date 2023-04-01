@@ -9,6 +9,8 @@ public class MinerPatrol : MonoBehaviour
     [SerializeField] private float vision;
     [SerializeField] private LayerMask playerLayer;
 
+    [SerializeField] private GameObject gameoverScreen;
+
     private Vector3 prevLocation = Vector3.zero;
 
     private int currentWaypointIndex = 0;
@@ -89,14 +91,14 @@ public class MinerPatrol : MonoBehaviour
         isChasing = false;
 
         //dijelasin di video laporan minggu 2
-        if (!isChasing )
+        if (!isChasing && player.GetComponent<Collider2D>().gameObject.CompareTag("Player"))
         {
             if (player.transform.position.x < transform.position.x + vision && player.transform.position.x > transform.position.x - vision)
             {
                 if (player.transform.position.y < transform.position.y + vision && player.transform.position.y > transform.position.y - vision)
                 {
                     Time.timeScale = 0;
-                    Debug.Log("Ketangkap");
+                    gameoverScreen.SetActive(true);
                 }
             }   
         } 

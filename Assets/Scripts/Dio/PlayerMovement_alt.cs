@@ -11,6 +11,7 @@ public class PlayerMovement_alt : MonoBehaviour
     public bool canMove = true;
     bool isSprinting = false;
     bool isCrouching = false;
+    private bool isTired;
     float movementX = 0.0f;
     float movementY = 0.0f;
     float stamina;
@@ -23,7 +24,7 @@ public class PlayerMovement_alt : MonoBehaviour
     public float walkSpeed = 1;
     public float crouchSpeed = 0.5f;
     public float sprintSpeed = 2;
-    public float maxStamina = 10;
+    public float maxStamina = 5;
     public float staminaRegen = 1;
     public float staminaDrain = 1;
     public float staminaCooldTime = 2;
@@ -38,13 +39,24 @@ public class PlayerMovement_alt : MonoBehaviour
 
     private void Update()
     {
+         //kalau stamina nol, player gak bisa gerak untuk sementara
+        if (stamina < 0)
+        {
+            isSprinting = false;
+            isCrouching = false;
+            isTired = true;
+            staminaCooldown = false;
+        } else if (stamina >= maxStamina) {
+            isTired = false;
+        }
+
         // Sprint handler
-        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0) 
         {
             // Change speed, drain stamina, and trigger staminaRegen cooldown when sprinting
             stepFactor = sprintAccel;
             maxSpeed = sprintSpeed;
-            stamina -= staminaDrain * Time.deltaTime;
+            stamina -= staminaDrain * Time.deltaTime * 2;
             staminaCooldown = true;
             timeCounter = 0;
             isSprinting = true;
@@ -52,7 +64,7 @@ public class PlayerMovement_alt : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.LeftControl) && stamina > 0)
         {
-            // Change speed and state when crouching
+            // Change speed, drain stamina, and change state when crouching
             stepFactor = crouchAccel;
             maxSpeed = crouchSpeed;
             stamina -= staminaDrain * Time.deltaTime;
@@ -91,18 +103,6 @@ public class PlayerMovement_alt : MonoBehaviour
             else if (stamina > maxStamina)
                 stamina = maxStamina;
         }
-
-         //kalau stamina nol, player gak bisa gerak untuk sementara
-        if (stamina <= 0)
-        {
-            isSprinting = false;
-            isCrouching = false;
-            canMove = false;
-            staminaCooldown = false;
-        } else if (stamina >= maxStamina) {
-            canMove = true;
-        }
-
     }
 
     void FixedUpdate()
@@ -143,7 +143,7 @@ public class PlayerMovement_alt : MonoBehaviour
             movementY = returnSign(movementY) * maxSpeed;
 
         // Change movement vector, Zero movement when in an event (via canMove)
-        if (canMove) { moveDelta = new Vector2(movementX, movementY); }
+        if (canMove && !isTired) { moveDelta = new Vector2(movementX, movementY); }
         else { moveDelta = new Vector2(0, 0);  }
 
         // Rotation handler
