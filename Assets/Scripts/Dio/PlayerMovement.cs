@@ -4,121 +4,177 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float walkingSpeed;
-    [SerializeField] private float crouchingspeed;
-    [SerializeField] private float sprintspeed;
-    [SerializeField] private float maxStamina;
-    private float speed;
-    private float currentStamina;
-
-    private float horizontalInput;
-    private float verticalInput;
-
-    private bool isMoving;
-    private bool isCrouching = false;
-    private bool isSprinting = false;
-    private bool isTired = false;
-    
-    private Rigidbody2D body;
     private BoxCollider2D boxCollider;
-    private Animator anim;
-    
+    private Vector2 moveDelta;
+    private bool staminaCooldown = false;
+    private float timeCounter = 0.0f;
+    public bool canMove = true;
+    bool isSprinting = false;
+    bool isCrouching = false;
+    private bool isTired;
+    float movementX = 0.0f;
+    float movementY = 0.0f;
+    float stamina;
+    float stepFactor;
+    float maxSpeed;
+
+    public float walkAccel = 0.05f;
+    public float crouchAccel = 0.05f;
+    public float sprintAccel = 0.2f;
+    public float walkSpeed = 1;
+    public float crouchSpeed = 0.5f;
+    public float sprintSpeed = 2;
+    public float maxStamina = 5;
+    public float staminaRegen = 1;
+    public float staminaDrain = 1;
+    public float staminaCooldTime = 2;
+    public float stopFactor = 0.1f;
+
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
-        body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
-        speed = walkingSpeed;
-        currentStamina = maxStamina;
+        stamina = maxStamina;
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        Debug.Log(currentStamina);
-
-        //kalau stamina nol, player gak bisa gerak untuk sementara
-         if (currentStamina < 0)
+         //kalau stamina nol, player gak bisa gerak untuk sementara
+        if (stamina < 0)
         {
+            isSprinting = false;
+            isCrouching = false;
             isTired = true;
-            body.bodyType = RigidbodyType2D.Static;
-            anim.enabled = false;
-        } else if (currentStamina >= maxStamina) {
+            staminaCooldown = false;
+        } else if (stamina >= maxStamina) {
             isTired = false;
-            body.bodyType = RigidbodyType2D.Dynamic;
-            anim.enabled = true;
         }
 
-        //stamina recover ketika player tidak crouch atau sprint
-        if (!isCrouching && currentStamina < maxStamina && !isSprinting)
+        // Sprint handler
+        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0) 
         {
-            currentStamina += Time.deltaTime * 2;
+            // Change speed, drain stamina, and trigger staminaRegen cooldown when sprinting
+            stepFactor = sprintAccel;
+            maxSpeed = sprintSpeed;
+            stamina -= staminaDrain * Time.deltaTime * 2;
+            staminaCooldown = true;
+            timeCounter = 0;
+            isSprinting = true;
+            isCrouching = false;
+        }
+        else if (Input.GetKey(KeyCode.LeftControl) && stamina > 0)
+        {
+            // Change speed, drain stamina, and change state when crouching
+            stepFactor = crouchAccel;
+            maxSpeed = crouchSpeed;
+            stamina -= staminaDrain * Time.deltaTime;
+            staminaCooldown = true;
+            timeCounter = 0;
+            isSprinting = false;
+            isCrouching = true;
+            transform.gameObject.tag = "Hiding";
+        }
+        else
+        {
+            // Change speed back to walk when not sprinting
+            stepFactor = walkAccel;
+            maxSpeed = walkSpeed;
+            isSprinting = false;
+            isCrouching = false;
+            transform.gameObject.tag = "Player";
         }
 
-         if (!isMoving)
-         {
-            //mendapatkan input yang diberikan. apakah horizontal atau vertikal
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-
-            // //mengubah arah menghadap
-            anim.SetFloat("MoveX", horizontalInput);
-            anim.SetFloat("MoveY", verticalInput);
-
-            //jika arah panah ditekan, karakter berjalan
-            if (horizontalInput != 0 || verticalInput != 0)
-            {
-                StartCoroutine(Walk());
-            }
-         }
-
-        //animasi berjalan
-        anim.SetBool("isMoving", isMoving); 
-
-        //membuat player crouch
-        if (!isSprinting && !isTired)
+        if (!isSprinting && !isCrouching)
         {
-            if (Input.GetKey("space") && currentStamina > 0)
+            // staminaRegen cooldown handler
+            if (timeCounter < staminaCooldTime)
             {
-                isCrouching = true;
-                transform.gameObject.tag = "Hiding";
-                speed = crouchingspeed;     
-                currentStamina -= Time.deltaTime;
+                timeCounter += Time.deltaTime;
             }
-            //cancel crouch
-            if (Input.GetKeyUp("space") || currentStamina < 0)
+            else
             {
-                isCrouching = false;
-                transform.gameObject.tag = "Player";
-                speed = walkingSpeed;
+                timeCounter = 0.0f;
+                staminaCooldown = false;
             }
-        }
-        
-         //membuat player sprint
-        if (!isCrouching && !isTired)
-        {
-            if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
-            {
-                isSprinting = true;
-                speed = sprintspeed;     
-                currentStamina -= Time.deltaTime * 2;
-            }
-            //cancel sprint
-            if (Input.GetKeyUp(KeyCode.LeftShift) || currentStamina < 0)
-            {
-                isSprinting = false;
-                speed = walkingSpeed;
-            }
+
+            // staminaRegen handler
+            if (stamina < maxStamina && !staminaCooldown)
+                stamina += staminaRegen * Time.deltaTime;
+            else if (stamina > maxStamina)
+                stamina = maxStamina;
         }
     }
 
-    //proses berjalan
-    private IEnumerator Walk()
-    {  
-        isMoving = true;
-        body.velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
-        yield return null;
-        isMoving = false;
+    void FixedUpdate()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+
+        // X axis acceleration handler 
+        if (x != 0 && Mathf.Abs(movementX) <= maxSpeed)
+        {
+            movementX = movementX + (x * stepFactor);
+        }
+        else if (Mathf.Abs(movementX) > 0 && x == 0)
+        {
+            movementX = movementX - (stopFactor * returnSign(movementX));
+        }
+
+        // X axis movement cleanup
+        if (Mathf.Abs(movementX) < stepFactor / 2)
+            movementX = 0;
+        if (Mathf.Abs(movementX) >= maxSpeed)
+            movementX = returnSign(movementX) * maxSpeed;
+
+        // Y axis acceleration handler
+        if (y != 0 && Mathf.Abs(movementY) <= maxSpeed)
+        {
+            movementY = movementY + (y * stepFactor);
+        }
+        else if (Mathf.Abs(movementY) > 0 && y == 0)
+        {
+            movementY = movementY - (stopFactor * returnSign(movementY));
+        }
+
+        //Y axis movement cleanup
+        if (Mathf.Abs(movementY) < stepFactor / 2)
+            movementY = 0;
+        if (Mathf.Abs(movementY) >= maxSpeed)
+            movementY = returnSign(movementY) * maxSpeed;
+
+        // Change movement vector, Zero movement when in an event (via canMove)
+        if (canMove && !isTired) { moveDelta = new Vector2(movementX, movementY); }
+        else { moveDelta = new Vector2(0, 0);  }
+
+        // Rotation handler
+        if (x > 0 && canMove)
+        {
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+        }
+        else if (x < 0 && canMove)
+        {
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y);
+        }
+
+
+        // Move the character via Translate
+        transform.Translate(moveDelta * Time.deltaTime);
     }
+
+    private void LateUpdate() {
+        Debug.Log(stamina);
+    }
+
+    int returnSign(float num)
+    {
+        if(num >= 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
 }

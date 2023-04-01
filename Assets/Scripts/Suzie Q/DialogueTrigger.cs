@@ -34,8 +34,8 @@ public class DialogueTrigger : MonoBehaviour
         }
 
         // Mark as triggered and lock the player movement (Return it when dialogue is done)
-        if (dialBox.GetComponent<Dialogue>().isStarted) { isTriggered = true; Player.GetComponent<PlayerMovement_alt>().canMove = false;  }
-        else { isTriggered = false; Player.GetComponent<PlayerMovement_alt>().canMove = true;  }
+        if (dialBox.GetComponent<Dialogue>().isStarted) { isTriggered = true; Player.GetComponent<PlayerMovement>().canMove = false;  }
+        else { isTriggered = false; Player.GetComponent<PlayerMovement>().canMove = true;  }
     }
 
     private void FixedUpdate()
