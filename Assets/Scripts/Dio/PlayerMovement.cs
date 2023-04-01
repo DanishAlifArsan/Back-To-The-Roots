@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
+
+    
 {
     private BoxCollider2D boxCollider;
     private Vector2 moveDelta;
@@ -14,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isTired;
     float movementX = 0.0f;
     float movementY = 0.0f;
-    float stamina;
+    public float stamina;
     float stepFactor;
     float maxSpeed;
 
@@ -162,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void LateUpdate() {
-        Debug.Log(stamina);
+
     }
 
     int returnSign(float num)
