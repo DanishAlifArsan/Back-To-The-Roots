@@ -26,7 +26,7 @@ public class PlayerMovement_alt : MonoBehaviour
     public float maxStamina = 10;
     public float staminaRegen = 1;
     public float staminaDrain = 1;
-    public float staminaCooldTime = 5;
+    public float staminaCooldTime = 2;
     public float stopFactor = 0.1f;
 
     // Start is called before the first frame update
@@ -50,13 +50,17 @@ public class PlayerMovement_alt : MonoBehaviour
             isSprinting = true;
             isCrouching = false;
         }
-        else if (Input.GetKey(KeyCode.LeftControl))
+        else if (Input.GetKey(KeyCode.LeftControl) && stamina > 0)
         {
             // Change speed and state when crouching
             stepFactor = crouchAccel;
             maxSpeed = crouchSpeed;
+            stamina -= staminaDrain * Time.deltaTime;
+            staminaCooldown = true;
+            timeCounter = 0;
             isSprinting = false;
             isCrouching = true;
+            transform.gameObject.tag = "Hiding";
         }
         else
         {
@@ -65,9 +69,10 @@ public class PlayerMovement_alt : MonoBehaviour
             maxSpeed = walkSpeed;
             isSprinting = false;
             isCrouching = false;
+            transform.gameObject.tag = "Player";
         }
 
-        if (!isSprinting)
+        if (!isSprinting && !isCrouching)
         {
             // staminaRegen cooldown handler
             if (timeCounter < staminaCooldTime)
@@ -85,6 +90,17 @@ public class PlayerMovement_alt : MonoBehaviour
                 stamina += staminaRegen * Time.deltaTime;
             else if (stamina > maxStamina)
                 stamina = maxStamina;
+        }
+
+         //kalau stamina nol, player gak bisa gerak untuk sementara
+        if (stamina <= 0)
+        {
+            isSprinting = false;
+            isCrouching = false;
+            canMove = false;
+            staminaCooldown = false;
+        } else if (stamina >= maxStamina) {
+            canMove = true;
         }
 
     }
@@ -143,6 +159,10 @@ public class PlayerMovement_alt : MonoBehaviour
 
         // Move the character via Translate
         transform.Translate(moveDelta * Time.deltaTime);
+    }
+
+    private void LateUpdate() {
+        Debug.Log(stamina);
     }
 
     int returnSign(float num)

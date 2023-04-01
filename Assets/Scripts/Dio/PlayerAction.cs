@@ -19,7 +19,7 @@ public class PlayerAction : MonoBehaviour
         //player mengambil stone yang tersebar di map
         Collider2D stone = Physics2D.OverlapCircle(transform.position, 0.2f, LayerMask.GetMask("Default"));
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
            if (stone.GetComponent<Collider2D>() != null && stone.GetComponent<Collider2D>().gameObject.CompareTag("Collectible"))
             {
