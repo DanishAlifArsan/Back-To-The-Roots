@@ -163,10 +163,6 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(moveDelta * Time.deltaTime);
     }
 
-    private void LateUpdate() {
-
-    }
-
     int returnSign(float num)
     {
         if(num >= 0)
