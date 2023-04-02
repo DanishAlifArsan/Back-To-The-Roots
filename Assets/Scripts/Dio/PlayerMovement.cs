@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Sprint handler
-        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0) 
+        if (Input.GetKey(KeyCode.LeftShift) && !isTired) 
         {
             // Change speed, drain stamina, and trigger staminaRegen cooldown when sprinting
             stepFactor = sprintAccel;
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = true;
             isCrouching = false;
         }
-        else if (Input.GetKey(KeyCode.LeftControl) && stamina > 0)
+        else if (Input.GetKey(KeyCode.LeftControl) && !isTired)
         {
             // Change speed, drain stamina, and change state when crouching
             stepFactor = crouchAccel;

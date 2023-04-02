@@ -321,6 +321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dio
       objectReference: {fileID: 0}
+    - target: {fileID: 2333564798371854340, guid: deb19785e25008e4da96f3823d3db97f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2333564798371854342, guid: deb19785e25008e4da96f3823d3db97f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -563,11 +567,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5944610454231363713, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -225.00002
+      value: -225
       objectReference: {fileID: 0}
     - target: {fileID: 5944610454438015546, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -750.00006
+      value: -750
       objectReference: {fileID: 0}
     - target: {fileID: 5944610454438015550, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
       propertyPath: player
