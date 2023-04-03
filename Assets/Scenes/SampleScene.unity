@@ -567,11 +567,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5944610454231363713, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -225
+      value: -225.00002
       objectReference: {fileID: 0}
     - target: {fileID: 5944610454438015546, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -750
+      value: -750.00006
       objectReference: {fileID: 0}
     - target: {fileID: 5944610454438015550, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
       propertyPath: player
