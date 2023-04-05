@@ -357,6 +357,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.021214008
       objectReference: {fileID: 0}
+    - target: {fileID: 8671908242888905469, guid: 84df7adb6970f214ab39ef559f71d4da, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671908242888905470, guid: 84df7adb6970f214ab39ef559f71d4da, type: 3}
       propertyPath: m_Name
       value: Miners
@@ -15956,3 +15960,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1261586558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261586556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dcba6e255e9a8d4784f3ff210ce4701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

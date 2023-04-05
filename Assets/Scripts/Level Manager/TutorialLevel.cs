@@ -5,7 +5,7 @@ using UnityEngine;
 public class TutorialLevel : MonoBehaviour
 {
     [SerializeField] private DialogueTrigger[] tutorialDialogue;
-    private bool[] isActive = {false,false,false};
+    private bool[] isTriggered = {false,false,false};
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +25,12 @@ public class TutorialLevel : MonoBehaviour
     }
 
     private void tutorial(int index) {
-        if (!isActive[index] && Vector2.Distance(tutorialDialogue[index].Player.transform.position, tutorialDialogue[index].transform.position)  < 2f)
+        if (!isTriggered[index] && Vector2.Distance(tutorialDialogue[index].Player.transform.position, tutorialDialogue[index].transform.position)  < 2f)
         {
             tutorialDialogue[index].dialBox.GetComponent<Dialogue>().lines = tutorialDialogue[index].lines;
             tutorialDialogue[index].interactAction.Invoke();
             tutorialDialogue[index].enabled = false;
-            isActive[index] = true;
+            isTriggered[index] = true;
         }
     }
 }
