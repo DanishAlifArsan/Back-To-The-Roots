@@ -8,7 +8,7 @@ public class Teleporter : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("Player"))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 }

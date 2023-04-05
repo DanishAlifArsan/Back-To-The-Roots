@@ -36,7 +36,7 @@ public class Landscape : MonoBehaviour
     // private void LateUpdate() {
     //     if (isTriggered)
     //     {
-    //         SceneManager.LoadScene(2);
+    //         SceneManager.LoadScene(3);
     //     }
     // }
 }
