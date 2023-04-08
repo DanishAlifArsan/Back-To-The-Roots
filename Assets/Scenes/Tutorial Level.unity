@@ -169,11 +169,14 @@ MonoBehaviour:
   - {fileID: 748636653}
   - {fileID: 1241479439}
   - {fileID: 2074130843}
+  - {fileID: 1297938813}
+  - {fileID: 941743636}
   blackScreen: {fileID: 1860996704}
   invisibleWall:
   - {fileID: 182098973}
   interactObject:
   - {fileID: 601394669}
+  - {fileID: 280438242}
 --- !u!212 &173882173
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -243,6 +246,8 @@ Transform:
   - {fileID: 748636652}
   - {fileID: 1241479438}
   - {fileID: 2074130844}
+  - {fileID: 1297938812}
+  - {fileID: 941743635}
   - {fileID: 182098974}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -278,7 +283,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 173882174}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &182098975
 BoxCollider2D:
@@ -733,6 +738,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a12040156b7d4b240a6995b1547f96a5, type: 3}
+--- !u!1 &941743634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 941743635}
+  - component: {fileID: 941743636}
+  m_Layer: 0
+  m_Name: Tutorial (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &941743635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941743634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.27, y: -3.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 173882174}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &941743636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941743634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f4010c02eaa1e44ba97567b54fedc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialBox: {fileID: 1860996702}
+  Player: {fileID: 1011362248}
+  lines:
+  - Mimo langsung terbang menuju pintu keluar rumah dengan semangat
+  - "Dio : \u201CHeiii tunggu dulu!! Yang benar saja, apa kamu tidak mau setidaknya
+    mendengarkan pendapatku terlebih dahulu??!!\u201D"
+  interactAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1860996703}
+        m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
+        m_MethodName: startDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &970262790 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4201036407937860911, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
@@ -951,6 +1021,105 @@ MonoBehaviour:
   - "Ibu : \u201COiya, siang ini ibu nanti mau kembali membantu di kebun Paman Remi,
     jadi kamu jaga rumah selama Ibu keluar ya..\u201D "
   - "Dio : \u201CSiaapp.\u201D "
+  interactAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1860996703}
+        m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
+        m_MethodName: startDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &1297938811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1297938812}
+  - component: {fileID: 1297938813}
+  m_Layer: 0
+  m_Name: Tutorial (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1297938812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297938811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.72, y: 7.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 173882174}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297938813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297938811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f4010c02eaa1e44ba97567b54fedc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialBox: {fileID: 1860996702}
+  Player: {fileID: 1011362248}
+  lines:
+  - "Fairy : \u201CHoaaammm\u2026. Lho\u2026 Hah? Eh? Dimana benihnya? Kamu siapa?\u201D"
+  - Karena kaget, dengan reflek Dio melempar kotak tadi bersama dengan makhluk kubus
+    bersinar yang baru saja berbicara kepadanya
+  - "Dio : \u201CUaaahhhhh apa itu tadi?!!\u201D"
+  - "Fairy : \u201CHeii apa-apaan itu tadi? Sakit tahu!\u201D"
+  - "Fairy : \u201CUuuhhhhh pusingg\u2026\u201D"
+  - "Dio : \u201CMa-Maaf, tadi aku reflek karena kaget.\u201D"
+  - "Dio : \u201CLagi pula, kamu ini makhluk apa? Aku nggak pernah lihat kunang-kunang
+    berbentuk kotak yang dapat berbicara sebelumnya\u2026\u201D"
+  - "Fairy : \u201CHoii! Nggak sopan. Aku tuh Mimo, fairy Grove Keeper, penjaga dari
+    Pohon Agung Baringin!\u201D"
+  - "Dio : \u201CUmm\u2026 Fairy? Pohon Agung?\u201D"
+  - Kemudian Mimo menjelaskan asal-usul benih yang Dio pegang serta alasan kenapa
+    ia berada di dalam kotak mainannya Dio.
+  - "Dio : \u201CJadi selama ini mimpiku itu kenangan yang pernah kulakukan sewaktu
+    aku kecil? Dan pohon raksasa itu beneran ada?\u201D"
+  - "Mimo : \u201CYap, benih ini merupakan bentuk perwujudan rasa bersyukur kami
+    sebagai fairy ketika ada fairy lain atau seseorang yang membuat hati kami bahagia.
+    Benih yang kamu miliki ini merupakan pemberian oleh kakek Mamo kepada seorang
+    anak kecil yang pernah ia ajak berkelana.\u201D"
+  - "Mimo : \u201CDan anak itu adalah kamu Dio!\u201D"
+  - "Dio : \u201C \u2026 \u201C"
+  - "Mimo : \u201CBenih ini sangat penting bagi kami para Grove Keeper, karena benih
+    ini bagaikan saudara kami yang lahir langsung dari Pohon Agung Baringin sehingga
+    kami harus senantiasa menjaga bagaimanapun caranya. Di dalam benih ini terkandung
+    isi hati, kenangan, pengalaman, ilmu dan kekuatan alam dari setiap fairy dan
+    semua itu terkumpul menjadi benih mulia yang kamu genggam itu.\u201D"
+  - "Mimo : \u201CAku yakin, benih ini akan menjadi bagian terakhir dalam menyembuhkan
+    Pohon Agung Baringin yang saat ini sedang sakit akibat ulah manusia-manusia tak
+    bertanggung jawab itu. Khususnya manusia \u2018itu\u2019.\u201D"
+  - "Mimo : \u201C Kuharap apa yang kakek harapkan selama ini terkabul dan kakek
+    dapat beristirahat dengan tenang \u2026\u201D"
+  - "Dio : \u201CRasa bersyukur \u2026 Berkelana? Penyembuhan?\u201D"
+  - "Mimo : \u201CKayaknya kamu masih bingung ya. Tenang saja. Grove Keeper Mimo,
+    siap membantumu dalam petualangan kita menyembuhkan Pohon Agung Baringin!!\u201D"
+  - " Mimo : \u201CBaiklah, introduksi selesai. Ayo kita mulai petualangan perdana
+    kita!!!\u201D "
   interactAction:
     m_PersistentCalls:
       m_Calls:
@@ -1348,6 +1517,21 @@ MonoBehaviour:
   - "Dio : \u201CDuh ngantuk banget. Kayaknya terlalu wareg aku mengambil hamburger
     steak nya, tapi ini steak favoritku sih\u201D "
   - "Dio : \u201CTiduran sebentar enak kali yaa\u2026\u201D"
+  - ...
+  - "Dio : \u201CHaahhh\u2026 haahhhh\u2026\u201D"
+  - "Dio : \u201CMimpi aneh itu lagi\u2026 Tapi rasanya ini beda deh\u201D"
+  - "Dio : \u201CKali ini ada benih, dan aku rasanya pernah melihat kotak tadi\u2026 "
+  - "Dio : \u201CApa mungkin\u2026\u201D"
+  - Dio segera melompat dari kasurnya dan lanjut mengacak-acak kamar tidurnya mencari
+    kotak lusuh yang Dio familiar pernah melihatnya.
+  - ...
+  - 1 jam kemudian, Dio berhasil menemukan kotak tersebut
+  - "Dio : \u201CIni dia kotaknya. Tak kusangka benar-benar mirip dengan yang ada
+    dalam mimpiku\u201D"
+  - Dio membuka kotak tadi dan benar di dalamnya terdapat sebuah benih seperti biji
+    bunga matahari namun benih ini berwarna hijau muda mengkilap
+  - "Dio : \u201CBiji matahari yang aneh, aku belum pernah melihat yang seperti ini\u201D"
+  - 'Tiba-tiba dari dalam kotak terdengar suara dan muncul sinar seperti kunang-kunang '
   interactAction:
     m_PersistentCalls:
       m_Calls:

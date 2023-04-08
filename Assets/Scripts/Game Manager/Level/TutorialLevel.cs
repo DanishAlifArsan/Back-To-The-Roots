@@ -8,7 +8,7 @@ public class TutorialLevel : MonoBehaviour
     [SerializeField] private GameObject blackScreen;
     [SerializeField] private GameObject[] invisibleWall;
     [SerializeField] private GameObject[] interactObject;
-    private bool[] isTriggered = {false,false,false,false};
+    private bool[] isTriggered = {false,false,false,false,false,false};
 
     private bool dialogueStarted = false;
     // Start is called before the first frame update
@@ -57,9 +57,13 @@ public class TutorialLevel : MonoBehaviour
             tutorialDialogue[index].interactAction.Invoke();
             tutorialDialogue[index].gameObject.SetActive(false);
             isTriggered[index] = true;
-            if (index == 3)
+            if (index == 4)
             {
                 interactObject[0].SetActive(true);
+            }
+            if (index == 5)
+            {
+                interactObject[1].SetActive(true);
             }
         }
         // if (!tutorialDialogue[index].enabled)

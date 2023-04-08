@@ -307,8 +307,27 @@ MonoBehaviour:
   dialBox: {fileID: 894506988}
   Player: {fileID: 803226541}
   lines:
-  - Tempat ini berbahaya.
-  - Anak kecil dilarang masuk.
+  - Sesampainnya di dekat pintu masuk tambang, Dio dan Mimo melihat seseorang sedang
+    berjaga di depan.
+  - "Dio : \u201CDuuhh jauh juga aku berjalan. Heii Mimo, apa kita sudah sampai?\u201D"
+  - "Mimo : \u201CSsstttt, lihat di depan sana\u201D"
+  - "Dio : \u201CWoaahhh, benar ada tambang di belakang pabrik ini.\u201D"
+  - "Mimo : \u201CSssstttt. Kecilkan suaramu. Sepertinya ada seseorang yang sedang
+    berjaga.\u201D"
+  - "Dio : \u201CSepertinya dia bekerja disini.\u201D"
+  - "Mimo : \u201CWaduhh dia lihat kesini!!\u201D"
+  - Mimo dengan gesit masuk ke dalam topi Dio
+  - "Dio : \u201CHeii Mimo! Apa yang kamu lakukan?\u201D"
+  - Tiba-tiba penjaga pintu tadi sudah di depan Dio
+  - "Miner : \u201CHei kamu! Kenapa bocah sepertimu bisa bermain sampai kesini?\u201D"
+  - "Dio : \u201C Waaagghhh!!\u201D"
+  - "Dio : \u201CUhhh\u2026 anu pak\u2026\u201D"
+  - "Miner : \u201CHmmm??\u201D"
+  - "Dio : \u201CAnu pak\u2026 S-Saya tersesat\u2026 ketika bermain p-petak umpet\u201D"
+  - "Miner : \u201CHaahh~ Ada-ada saja kamu nak.\u201D"
+  - "Miner : \u201CMenjauhlah dari sini. Tempat ini berbahaya. Carilah tempat bermain
+    selain disini!\u201D"
+  - "Dio : \u201C B-Baik pak\u201D"
   interactAction:
     m_PersistentCalls:
       m_Calls:
