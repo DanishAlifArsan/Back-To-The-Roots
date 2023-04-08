@@ -47,4 +47,5 @@ public class DialogueTrigger : MonoBehaviour
     {
         return Mathf.Sqrt(Mathf.Pow((transform.position.x - Player.transform.position.x), 2) + Mathf.Pow((transform.position.y - Player.transform.position.y), 2));
     }
+    
 }

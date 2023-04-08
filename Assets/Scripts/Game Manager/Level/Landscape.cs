@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Landscape : MonoBehaviour
 {
+    [SerializeField] Transform teleporter;
     private DialogueTrigger fairyDialogue;
-    private bool isTriggered = false;
     private bool dialogueStarted = false;
     // Start is called before the first frame update
     private void Start()
@@ -17,17 +17,11 @@ public class Landscape : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (fairyDialogue.dialBox.GetComponent<Dialogue>().isStarted)
-        {
-            dialogueStarted = true;
-        }
-
-        if (dialogueStarted)
-        {
-            if (!fairyDialogue.dialBox.GetComponent<Dialogue>().gameObject.activeSelf)
-            {
-                SceneManager.LoadScene(3);
-            }
-        }   
+         if (!dialogueStarted)
+         {
+            fairyDialogue.dialBox.GetComponent<Dialogue>().lines = fairyDialogue.lines;
+            fairyDialogue.interactAction.Invoke();
+            fairyDialogue.gameObject.SetActive(false);
+         }
     }
 }
