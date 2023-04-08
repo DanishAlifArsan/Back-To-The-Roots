@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f4010c02eaa1e44ba97567b54fedc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialBox: {fileID: 1969994980}
+  dialBox: {fileID: 1678566324}
   Player: {fileID: 884971760}
   lines:
   - Ini adalah akar dari pohon utama
@@ -244,7 +244,7 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1969994982}
+      - m_Target: {fileID: 1678566323}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: startDialogue
         m_Mode: 1
@@ -489,6 +489,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4201036406723668385, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201036406723668397, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5944610454231363713, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -225.00002
@@ -603,6 +611,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
+--- !u!114 &1678566323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4201036406420964262, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
+  m_PrefabInstance: {fileID: 1678566322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678566324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7e34d42fdc62d44aa80e9fc40b9fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1678566324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4201036406420964260, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
+  m_PrefabInstance: {fileID: 1678566322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1931936085
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,22 +674,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1969994980 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5944610454231363712, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
-  m_PrefabInstance: {fileID: 1678566322}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1969994982 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5944610454231363716, guid: 14daa1e69799a064eaafcf4cb4c1f46a, type: 3}
-  m_PrefabInstance: {fileID: 1678566322}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969994980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7e34d42fdc62d44aa80e9fc40b9fa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2079715738
 PrefabInstance:
   m_ObjectHideFlags: 0

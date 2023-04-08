@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Landscape Level.unity
     guid: f240ee3d481d9804f8fba85774065277
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Mine Level.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Altar.unity
