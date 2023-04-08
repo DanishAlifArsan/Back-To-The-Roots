@@ -34,7 +34,8 @@ public class TitleScreen : MonoBehaviour
     }
 
     private void Update() {
-        if (settingMenu.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        if (settingMenu.activeSelf && Input.anyKeyDown && !(Input.GetMouseButtonDown(0) 
+            || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
         {
             settingMenu.SetActive(false);
         }
@@ -43,9 +44,4 @@ public class TitleScreen : MonoBehaviour
     public void VolumeSetting(float volume) {
         audioMixer.SetFloat("volume",volume);
     }
-
-   private void MovementSetting() {
-    
-   }
-
 }

@@ -7,6 +7,7 @@ public class Landscape : MonoBehaviour
 {
     private DialogueTrigger fairyDialogue;
     private bool isTriggered = false;
+    private bool dialogueStarted = false;
     // Start is called before the first frame update
     private void Start()
     {
@@ -16,27 +17,17 @@ public class Landscape : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // if (fairyDialogue.Player.GetComponent<PlayerMovement>().canMove)
-        // {
-        //     SceneManager.LoadScene(2);
-        // }
-        // if(Input.GetKeyDown(KeyCode.Space) && !isTriggered)
-        // {
-        //     if (Vector2.Distance(transform.position, fairyDialogue.Player.transform.position) < 1f)
-        //     {
-        //         fairyDialogue.dialBox.GetComponent<Dialogue>().lines = fairyDialogue.lines;
-        //         fairyDialogue.interactAction.Invoke();
-        //         fairyDialogue.enabled = false;
-                
-        //     }
-        // }
-        
-    }
+        if (fairyDialogue.dialBox.GetComponent<Dialogue>().isStarted)
+        {
+            dialogueStarted = true;
+        }
 
-    // private void LateUpdate() {
-    //     if (isTriggered)
-    //     {
-    //         SceneManager.LoadScene(3);
-    //     }
-    // }
+        if (dialogueStarted)
+        {
+            if (!fairyDialogue.dialBox.GetComponent<Dialogue>().gameObject.activeSelf)
+            {
+                SceneManager.LoadScene(3);
+            }
+        }   
+    }
 }
