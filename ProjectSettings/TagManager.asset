@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hiding
   - Collectible
+  - Miner
   layers:
   - Default
   - TransparentFX

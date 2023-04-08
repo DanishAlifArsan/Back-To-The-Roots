@@ -173,6 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2716e5fb9a0764fa649da39c9f585b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stonePrefab: {fileID: 4451642541309737124, guid: f5f077e802e358c408d461619511811b, type: 3}
+  throwRange: 4
+  throwPower: 2
 --- !u!114 &3398582056730197951
 MonoBehaviour:
   m_ObjectHideFlags: 0

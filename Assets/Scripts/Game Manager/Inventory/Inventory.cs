@@ -45,4 +45,15 @@ public class Inventory : MonoBehaviour
     public bool isFull() {
         return inventoryItem.Count >= itemImage.Length;
     }
+
+    public bool Search(string name) {
+        for (int i = 0; i < inventoryItem.Count; i++)
+        {
+            if (inventoryItem[i].itemName.Equals(name))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
